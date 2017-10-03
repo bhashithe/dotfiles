@@ -1,0 +1,50 @@
+search 418
+search 842
+search 850
+search 855
+search 860
+search 906
+search 907
+search 911
+search 909
+search 14909
+search 14913
+search 919
+search 921
+search 923
+search 
+search 474
+search 974
+search 214
+search 962
+search 835
+search 834
+search 156
+search 844
+search 522
+search 500
+l
+
+search m
+search Min
+touch ER.tex
+open_with k
+search py
+touch mark.py
+mkdir
+mkdir work
+touch NaiveBayes.py
+open_with ./a
+mkdir Salini
+search s
+search Sal
+touch Pattern1.java
+touch Exploration.py
+rename testdata.csv_
+rename testdata.manual.2009.06.14.csv_
+rename testdata.csv
+rename traindata.csv
+open_with unzip
+rename fine_dine.jpg
+find .vimr
+delete
