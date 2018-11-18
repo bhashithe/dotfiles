@@ -7,6 +7,7 @@ set relativenumber
 set tabstop=2
 set softtabstop=0 noexpandtab
 set shiftwidth=2
+set colorscheme delek
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
