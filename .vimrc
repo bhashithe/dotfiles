@@ -1,69 +1,82 @@
-set nocompatible
+set nocompatible              " be iMproved, required
 syntax on
 set ignorecase
 set smartcase
 set incsearch
+set relativenumber
+set tabstop=2
+set softtabstop=0 noexpandtab
+set shiftwidth=2
+filetype off                  " required
 
-filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'bling/vim-airline'
-Plugin 'honza/vim-snippets'
-Plugin 'raimondi/delimitmate'
+" " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" my installed plugins
+Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'Lokaltog/vim-powerline'
-" Plugin 'tpope/vim-colorschemes'
-Plugin 'scrooloose/nerdtree.git'
-" Plugin 'Buffergator'
-" Now we can turn our filetype functionality back on
-filetype plugin indent on
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'fs111/pydoc.vim'
+" does not work
+Plugin 'ivanov/vim-ipython'
+" does not work
+Plugin 'jpalardy/vim-slime'
 
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf = "mupdf"
+Plugin 'davidhalter/jedi-vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-markdown'
+Plugin 'tmhedberg/SimpylFold'
 
-" my key bindings
-map <leader>n :tabnew<cr>
-map <leader>[ :tabprevious<cr>
-map <leader>] :tabnext<cr>
-map <leader>w :tabclose<cr>
+call vundle#end()            " required
+filetype plugin indent on    " required
+" " To ignore plugin indent changes, instead use:
+" "filetype plugin on
+" "
+" " Brief help
+" " :PluginList       - lists configured plugins
+" " :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" " :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+" "
+" " see :h vundle for more details or wiki for FAQ
+" " Put your non-Plugin stuff after this line
 
-map <F2> :NERDTreeToggle<cr>
+" ctrlP commands
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
-set nu
-set laststatus=2
-set encoding=utf-8
+" NERDDTree toggling
+map <leader>` :NERDTreeToggle<cr>
 
-"snips
+" Slime commands
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_python_ipython = 1
+
+" UltiSnips and vim-snippets
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" biber latex map
-autocmd filetype tex map <leader>q :!pdflatex %; biber '%:t:r'; pdflatex %<cr><cr>
-autocmd filetype tex map <leader>e :!mupdf '%:t:r.pdf' &<cr><cr>
+" SimpylFold
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_import = 1
 
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
-" Latex bindings
-autocmd filetype tex inoremap ;em \emph{}<Space><++><Esc>T{i
-autocmd filetype tex inoremap ;bf \textbf{}<Space><++><Esc>T{i
-autocmd filetype tex inoremap ;pc \parencite{}<Space><++><Esc>T{i
-autocmd filetype tex inoremap ;ay \citeauthor{R}(\citeyear{<++>})<Space><++><Esc>FRs
-autocmd filetype tex inoremap ;cf \begin{frame}<Enter><Enter>\end{frame}<Up><Tab>\frametitle{}<Left>
-autocmd filetype tex inoremap ;cd \begin{frame}[fragile]<Enter><Enter>\end{frame}<Up>
-autocmd filetype tex inoremap ;ci \begin{itemize}<Enter><Enter>\end{itemize}<Up>
-autocmd filetype tex inoremap ii \item<Space>
-autocmd filetype tex inoremap ;cv \begin{verbatim}<Enter><Enter>\end{verbatim}<Up>
-" autocmd filetype tex innoremap $$ $$ R $$<Space><++>FRs
-autocmd filetype tex inoremap ;b \bar{}<++><Esc>T{i
-" BibTex bindings
-" autocmd filetype bib inoremap ;a @article{R,<Enter>author={<++>},<Enter>title={<++>},<Enter>year={<++>}<Enter>}<Escape>?R<Enter>s
+
+" " insert mode mappings
+" todo item
+inoremap <leader>ti - [ ]<space>
+inoremap <leader>td <esc>^lllsx<esc>A
+
+nmap <leader>[ :tabprevious<cr>
+nmap <leader>] :tabNext<cr>
+nmap <leader>w :tabclose<cr>
+nmap <leader>n :tabnew
