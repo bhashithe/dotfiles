@@ -4,9 +4,7 @@ set ignorecase
 set smartcase
 set incsearch
 set relativenumber
-set tabstop=2
-set softtabstop=0 noexpandtab
-set shiftwidth=2
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
